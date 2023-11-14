@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ホーム</title>
+</head>
+<body>
+    <h1>ようこそ！</h1>
+    
+    <!-- ユーザーがログインしている場合にはユーザー名を表示 -->
+    {% if 'username' in session %}
+        <p>こんにちは、{{ session['username'] }}さん！</p>
+    {% endif %}
+    
+    <!-- プロフィール画像の表示 -->
+    {% if 'username' in session and user.dashboard_image %}
+        <img src="{{ url_for('static', filename='weight_chart.png') }}" alt="Weight Chart">
+    {% endif %}
+
+    <!-- ホームページのコンテンツを追加 -->
+    <h2>最新のアクティビティ</h2>
+    <ul>
+        {% for activity in data_list %}
+            <li>{{ activity.date }}: {{ activity.steps }} 歩, {{ activity.calorie_intake }} kcal</li>
+        {% endfor %}
+    </ul>
+
+    <!-- プロフィールへのリンク -->
+    <a href="{{ url_for('profile') }}">プロフィールを編集</a>
+
+    <!-- ログインしている場合にはログアウトボタンを表示 -->
+    {% if 'username' in session %}
+        <a href="{{ url_for('logout') }}">ログアウト</a>
+    {% endif %}
+</body>
+</html>

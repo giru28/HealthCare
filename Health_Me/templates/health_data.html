@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>健康データ</title>
+</head>
+<body>
+    <h1>健康データ</h1>
+    <h2>Health Data</h2>
+    <p>Steps: {{ health_data.steps }}</p>
+    <p>Calorie Intake: {{ health_data.calorie_intake }}</p>
+    <!-- 他の健康データの表示を追加 -->
+
+    <h2>Enter Health Data</h2>
+    <form action="/add-health-data" method="post">
+        <label>Steps: <input type="number" name="steps"></label><br>
+        <label>Calorie Intake: <input type="number" name="calorie_intake"></label><br>
+        <!-- 他の健康データ入力フィールドを追加 -->
+        <button type="submit">Submit</button>
+    </form>
+    <a href="/profile">Back to Profile</a>
+    <a href="/health-goals">View Health Goals</a>
+    <a href="/logout">Logout</a>
+</body>
+</html>

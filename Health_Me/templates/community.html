@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>コミュニティ</title>
+</head>
+<body>
+    <h1>コミュニティ</h1>
+    {% if user.community %}
+        <p>コミュニティ名: {{ user.community.name }}</p>
+        <!-- 他のコミュニティ関連のコンテンツを追加 -->
+    {% else %}
+        <p>ユーザーはまだコミュニティに参加していません。</p>
+    {% endif %}
+</body>
+</html>

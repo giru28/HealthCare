@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ダッシュボード</title>
+    <!-- Bootstrap CSS を追加 -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8sh+WyjTkW1gPhsFFh1lNr4S0FdaBlxzB+qzSN" crossorigin="anonymous">
+</head>
+<body>
+    <h1>ダッシュボード</h1>
+    <!-- 体重チャートの表示 -->
+    <h2>bmiと体重チャート</h2>
+    <img src="{{ url_for('static', filename='weight_chart.png') }}" alt="Weight Chart">
+
+    <h2>Activity Data</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Date</th>
+                <th>Steps</th>
+                <th>Calorie Intake</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for activity in activity_data %}
+                <tr>
+                    <td>{{ activity.date }}</td>
+                    <td>{{ activity.steps }}</td>
+                    <td>{{ activity.calorie_intake }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <!-- アクティビティデータと体重データを同時に追加するためのモーダルフォーム -->
+    <div class="modal" id="addDataModal" tabindex="-1" role="dialog" aria-labelledby="addDataModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="addDataModalLabel">Add Activity and Weight Data</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <!-- アクティビティデータと体重データ追加のフォーム -->
+                    <form method="POST" action="/add-data">
+                        <div class="form-group">
+                            <label for="steps">Steps:</label>
+                            <input type="number" class="form-control" name="steps" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="calorie_intake">Calorie Intake:</label>
+                            <input type="number" class="form-control" name="calorie_intake" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="weight">Weight:</label>
+                            <input type="number" class="form-control" name="weight" required>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary">Add Data</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Bootstrap JS と Popper.js を追加 -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.7/dist/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8Wv2l5/ybTb" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8sh+WyjTkW1gPhsFFh1lNr4S0FdaBlxzB+qzSN" crossorigin="anonymous"></script>
+</body>
+</html>

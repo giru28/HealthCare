@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>プロフィール</title>
+</head>
+<body>
+    <h1>プロフィール</h1>
+    {% if user %}
+        <p>ユーザー名: {{ user.username }}</p>
+        <p>身長: {{ user.height }} cm</p>
+        <p>体重: {{ user.weight }} kg</p>
+        <p>年齢: {{ user.age }}</p>
+        <p>性別: {{ user.gender }}</p>
+        <p>健康目標: {{ user.health_goal }}</p>
+        <!-- 他のプロフィール情報を追加 -->
+    {% else %}
+        <p>ユーザーが見つかりません。</p>
+    {% endif %}
+</body>
+</html>

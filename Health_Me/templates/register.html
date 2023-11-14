@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>新規登録</title>
+</head>
+<body>
+    <h1>新規登録</h1>
+    <form action="/register" method="POST">
+        <label for="username">ユーザー名:</label>
+        <input type="text" name="username" required><br>
+
+        <label for="password">パスワード:</label>
+        <input type="password" name="password" required><br>
+
+        <label for="height">身長(cm):</label>
+        <input type="number" name="height" required><br>
+
+        <label for="weight">体重(kg):</label>
+        <input type="number" name="weight" required><br>
+
+        <label for="age">年齢:</label>
+        <input type="number" name="age" required><br>
+
+        <label for="gender">性別:</label>
+        <select name="gender" required>
+            <option value="male">男性</option>
+            <option value="female">女性</option>
+        </select><br>
+
+        <label for="health_goal">健康目標:</label>
+        <input type="text" name="health_goal" required><br>
+
+        <button type="submit">登録</button>
+    </form>
+</body>
+</html>

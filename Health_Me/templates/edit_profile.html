@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>プロフィール編集</title>
+</head>
+<body>
+    <h1>プロフィール編集</h1>
+    {% if user %}
+        <form action="/edit-profile" method="POST">
+            <label for="age">年齢:</label>
+            <input type="number" name="age" value="{{ user.age }}" required><br>
+
+            <label for="gender">性別:</label>
+            <select name="gender" required>
+                <option value="male" {% if user.gender == "male" %}selected{% endif %}>男性</option>
+                <option value="female" {% if user.gender == "female" %}selected{% endif %}>女性</option>
+            </select><br>
+
+            <label for="height">身長(cm):</label>
+            <input type="number" name="height" value="{{ user.height }}" required><br>
+
+            <label for="weight">体重(kg):</label>
+            <input type="number" name="weight" value="{{ user.weight }}" required><br>
+
+            <button type="submit">保存</button>
+        </form>
+    {% else %}
+        <p>ユーザーが見つかりません。</p>
+    {% endif %}
+</body>
+</html>
